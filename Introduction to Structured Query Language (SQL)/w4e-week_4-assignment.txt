@@ -1,0 +1,84 @@
+create database roster;
+
+DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS Course;
+
+CREATE TABLE `User`(
+    user_id     INTEGER NOT NULL AUTO_INCREMENT,
+    name        VARCHAR(128) UNIQUE,
+    PRIMARY KEY(user_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+CREATE TABLE Course (
+    course_id     INTEGER NOT NULL AUTO_INCREMENT,
+    title         VARCHAR(128) UNIQUE,
+    PRIMARY KEY(course_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+CREATE TABLE Member (
+    user_id       INTEGER,
+    course_id     INTEGER,
+    role          INTEGER,
+
+    CONSTRAINT FOREIGN KEY (user_id) REFERENCES `User` (user_id)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (course_id) REFERENCES Course (course_id)
+       ON DELETE CASCADE ON UPDATE CASCADE,
+
+    PRIMARY KEY (user_id, course_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+1 Breanna, si106, Instructor
+2 Darrie, si106, Learner
+3 Harris, si106, Learner
+4 Princess, si106, Learner
+5 Taonga, si106, Learner
+6 Jennifer, si110, Instructor
+7 Danish, si110, Learner
+8 Joude, si110, Learner
+9 Manisha, si110, Learner
+10 Maykayla, si110, Learner
+11 Eisa, si206, Instructor
+12 Alexandria, si206, Learner
+13 Allen, si206, Learner
+14 Dennan, si206, Learner
+15 Ming, si206, Learner
+
+
+
+insert into User(name) values('Breanna');
+insert into User(name) values('Darrie');
+insert into User(name) values('Harris');
+insert into User(name) values('Princess');
+insert into User(name) values('Taonga');
+insert into User(name) values('Jennifer');
+insert into User(name) values('Danish');
+insert into User(name) values('Joude');
+insert into User(name) values('Manisha');
+insert into User(name) values('Maykayla');
+insert into User(name) values('Eisa');
+insert into User(name) values('Alexandria');
+insert into User(name) values('Allen');
+insert into User(name) values('Dennan');
+insert into User(name) values('Ming');
+
+insert into Course(title) values('si106');
+insert into Course(title) values('si110');
+insert into Course(title) values('si206');
+
+insert into Member(user_id,course_id,role) values(1,1,1);
+insert into Member(user_id,course_id,role) values(2,1,0);
+insert into Member(user_id,course_id,role) values(3,1,0);
+insert into Member(user_id,course_id,role) values(4,1,0);
+insert into Member(user_id,course_id,role) values(5,1,0);
+insert into Member(user_id,course_id,role) values(6,2,1);
+insert into Member(user_id,course_id,role) values(7,2,0);
+insert into Member(user_id,course_id,role) values(8,2,0);
+insert into Member(user_id,course_id,role) values(9,2,0);
+insert into Member(user_id,course_id,role) values(10,2,0);
+insert into Member(user_id,course_id,role) values(11,3,1);
+insert into Member(user_id,course_id,role) values(12,3,0);
+insert into Member(user_id,course_id,role) values(13,3,0);
+insert into Member(user_id,course_id,role) values(14,3,0);
+insert into Member(user_id,course_id,role) values(15,3,0);
