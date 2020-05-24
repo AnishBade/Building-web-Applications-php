@@ -70,5 +70,12 @@ if (isset($_POST['user_id']) && isset($_POST['delete'])){
         <p>Email:<input type="email" name="email"  ></p>
         <p>Password:<input type="password" name="password"></p>
         <p><input type="submit" value="Add" ></p>
+       
 </form>
+<form action="login.php">
+<p>Login instead?
+            <button >Login</button>
+        </p>
+</form>
+
 </body>
