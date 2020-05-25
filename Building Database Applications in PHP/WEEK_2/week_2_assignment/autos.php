@@ -8,20 +8,29 @@ if(isset($_POST['logout'])){
     header('Location: index.php');
 }
 
-if(isset($_POST['make'])&& isset($_POST['year']) && isset($_POST['mileage']))
+if(isset($_POST['make']) && isset($_POST['year']) && isset($_POST['mileage']))
 {
-    $sql="insert into autos(make,year,mileage) values(:make,:year,:mileage)";
-    echo "<pre>\n".$sql."\n</pre>\n";
-    $stmt=$pdo->prepare($sql);
-    $stmt->execute(array(
-        ':make'=>$_POST['make'],
-        ':year'=>$_POST['year'],
-        ':mileage'=>$_POST['mileage']));
-    
+    if(strlen($_POST['make'])<1){
+        echo "Make is required";
+    }  
+    else if(is_numeric($_POST['year']) && is_numeric($_POST['mileage']))
+    {
+        $sql="INSERT INTO autos(make,year,mileage) VALUES(:mk,:y,:mil)";
+        echo "<pre>\n".$sql."\n</pre>\n";
+        //$stmt=$pdo->query($sql);
+        $stmt=$pdo->prepare($sql);
+        $stmt->execute(array(
+            ':mk'=>$_POST['make'],
+            ':y'=>$_POST['year'],
+            ':mil'=>$_POST['mileage']));
+    }
+    else{
+        echo "<h1>Error::Mileage and year must be numeric.</h1>Try Again<br>";
+    }
 }
 
 if (isset($_POST['auto_id']) && isset($_POST['delete'])){
-    $sql="delete from autos where auto_id = :zip";
+    $sql="DELETE FROM autos WHERE auto_id = :zip";
     echo "<pre>\n$sql\n</pre>\n";
     $stmt=$pdo->prepare($sql);
     $stmt->execute(array(':zip'=>$_POST['auto_id']));
@@ -33,7 +42,7 @@ if (isset($_POST['auto_id']) && isset($_POST['delete'])){
 
 <html>
 <head>
-    <title>Try</title>
+    <title>Anish Bade</title>
 </head>
 <body>
 
@@ -55,7 +64,7 @@ if (isset($_POST['auto_id']) && isset($_POST['delete'])){
                 echo "<tr><td>";
                 echo $row['auto_id'];
                 echo "</td><td>";
-                echo $row['make'];
+                echo htmlentities($row['make']);
                 echo "</td><td>";
                 echo $row['year'];
                 echo "</td><td>";

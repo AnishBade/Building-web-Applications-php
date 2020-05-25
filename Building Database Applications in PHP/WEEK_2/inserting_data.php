@@ -49,7 +49,7 @@ if (isset($_POST['user_id']) && isset($_POST['delete'])){
                 echo "<tr><td>";
                 echo $row['user_id'];
                 echo "</td><td>";
-                echo $row['name'];
+                echo htmlentities($row['name']);
                 echo "</td><td>";
                 echo $row['email'];
                 echo "</td><td>";
