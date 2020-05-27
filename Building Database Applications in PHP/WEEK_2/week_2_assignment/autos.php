@@ -7,11 +7,11 @@ $oldname = isset($_POST['make']) ? $_POST['make'] : '';
 if(isset($_POST['logout'])){
     header('Location: index.php');
 }
-
+$failure=false;
 if(isset($_POST['make']) && isset($_POST['year']) && isset($_POST['mileage']))
 {
     if(strlen($_POST['make'])<1){
-        echo "Make is required";
+        $failure= "Make is required";
     }  
     else if(is_numeric($_POST['year']) && is_numeric($_POST['mileage']))
     {
@@ -25,7 +25,7 @@ if(isset($_POST['make']) && isset($_POST['year']) && isset($_POST['mileage']))
             ':mil'=>$_POST['mileage']));
     }
     else{
-        echo "<h1>Error::Mileage and year must be numeric.</h1>Try Again<br>";
+        $failure= "Error::Mileage and year must be numeric.<br><h2>Try Again</h2><br>";
     }
 }
 
@@ -45,20 +45,19 @@ if (isset($_POST['auto_id']) && isset($_POST['delete'])){
     <title>Anish Bade</title>
 </head>
 <body>
-
-        <?php
-            echo "<table border='1'>";
-            echo "<tr><th>";
-            echo "auto_id";
-            echo "</th><th>";
-            echo "Make";
-            echo "</th><th>";
-            echo "Year";
-            echo"</th><th>";
-            echo "Mileage";
-            echo"</th><th>";
-            echo "More option";
-            echo "</th></tr>";
+        <table border='1'>
+            <tr><th>
+            auto_id
+            </th><th>
+            Make
+            </th><th>
+            Year
+            </th><th>
+            Mileage
+            </th><th>
+            More option
+            </th></tr>
+            <?php
             $stmt=$pdo->query("select make,year,mileage,auto_id from autos");
             while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                 echo "<tr><td>";
@@ -78,6 +77,7 @@ if (isset($_POST['auto_id']) && isset($_POST['delete'])){
             }
             echo "</table>";
         ?>
+    <p  ><h1 style='color:red '><?= $failure ?></h1></p>
   
     <p>Add A New User</p>
     <form method="post">
