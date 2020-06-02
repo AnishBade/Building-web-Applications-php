@@ -17,12 +17,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($row){
         $name=$row['name'];
-        echo "<h1> Login Successfull $name</h1>";
+       header('Location:inserting_data.php');
     
     }
     else{
         $name=$_POST['name'];
-        echo "<h1>Login Failed<br> Try gain $name</h1>";
+        echo "<h1>Login Failed<br> Try again $name</h1>";
      
     }
     
