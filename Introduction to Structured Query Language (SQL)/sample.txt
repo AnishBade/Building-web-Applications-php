@@ -1,0 +1,11 @@
+CREATE DATABASE crud;
+GRANT ALL ON crud.*TO 'crud'@'localhost' IDENTIFIED BY 'application';
+GRANT ALL ON crud.*TO 'crud'@'127.0.0.1' IDENTIFIED BY 'application';
+
+CREATE TABLE users(
+	user_id integer not null auto_increment primary key,
+	name varchar(128),
+	email varchar(128),
+	password varchar(128),
+	index(email)
+)ENGINE=InnoDB CHARSET = utf8;
