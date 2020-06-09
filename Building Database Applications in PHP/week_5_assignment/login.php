@@ -37,15 +37,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
 
         return;
 
-    } else if (strpos($_POST['email'], "@") === false) {
-
-        $_SESSION['error'] = "Email must have an at-sign (@)";
-
-        header("Location:login.php");
-
-        return;
-
-    } else {
+    }  else {
 
         $check = hash('md5', $salt . $_POST['pass']);
 
@@ -66,6 +58,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
             //error_log("Login fail ".$_POST['email']." $check");
 
             header("Location: login.php");
+            return;
 
         }
 
@@ -109,11 +102,11 @@ unset($_SESSION['error']);
 
     <form method="POST" >
 
-        <label for="email">Email</label>
+        <label for="name" style='font-weight:bold'>User Name</label>
 
-        <input type="text" name="email" id="email"><br/>
+        <input type="text" name="email" id="name" ><br/>
 
-        <label for="id_1723">Password</label>
+        <label for="id_1723"  style='font-weight:bold'>Password</label>
 
         <input type="text" name="pass" id="id_1723"><br/>
 

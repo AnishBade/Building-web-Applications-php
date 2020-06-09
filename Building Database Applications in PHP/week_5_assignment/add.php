@@ -1,6 +1,13 @@
+
 <?php
 require_once "pdo.php";
 session_start();
+if(!isset($_SESSION['name'])){
+    die('ACCESS DENIED');
+}
+echo '<h1>'.'Tracking Automobiles for '.$_SESSION['name'].'<h1>';
+
+
 if (isset($_POST['cancel'])) {
 
     // Redirect the browser to game.php
@@ -50,7 +57,9 @@ if ( isset($_SESSION['error']) ) {
     unset($_SESSION['error']);
 }
 ?>
-
+<html>
+<head><title>Anish Bade</title></head>
+<body>
 <form method="post">
 <p>Make:
 <input type="text" name="make"></p>
@@ -63,3 +72,5 @@ if ( isset($_SESSION['error']) ) {
 <p><input type="submit" value="Add"/>
 <input type="submit" value="Cancel" name="cancel"/></p>
 </form>
+</body>
+</html>
