@@ -148,7 +148,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 
 
 
-    $_SESSION['status'] = 'Record added';
+    $_SESSION['status'] = 'Profile added';
 
     $_SESSION['color'] = 'green';
 

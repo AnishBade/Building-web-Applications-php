@@ -122,7 +122,7 @@ if (isset($_REQUEST['profile_id']))
 
     <head>
 
-        <title>Ivan Neradovic Autos</title>
+        <title>Anish Bade</title>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -188,7 +188,7 @@ if (isset($_REQUEST['profile_id']))
 
                         <input type="hidden" name="profile_id" value="<?php echo $profile->profile_id; ?>">
 
-                        <input class="btn btn-primary" type="submit" name="" value="Delete" onclick="return confirmDelete();">
+                        <input class="btn btn-primary" type="submit" name="delete" value="Delete" onclick="return confirmDelete();">
 
                         <input class="btn btn-default" type="submit" name="cancel" value="Cancel">
 

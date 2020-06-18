@@ -91,7 +91,7 @@ if ( isset($_POST['email']) && isset($_POST['pass']) )
 
     ");
 
-
+//email=anish@gmail.com pw=php123
 
     $stmt->execute([
 
