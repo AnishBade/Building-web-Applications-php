@@ -2,7 +2,7 @@
 	
 session_start();
 
-include 'pdo.php';
+include 'helpers/pdo_helper.php';
 
 $logged_in = false;
 $profiles = [];
@@ -44,10 +44,9 @@ if (isset($_SESSION['name']) )
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Anish Bade's Resume Registry</title>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		<title>Anish Bade</title>
+		
+		<?php include 'helpers/head_helper.php'; ?>
 	</head>
 	<body>
 		<div class="container">
@@ -102,7 +101,7 @@ if (isset($_SESSION['name']) )
 												<a href="edit.php?profile_id=<?php echo $profile->profile_id; ?>">
 													Edit
 												</a> / 
-												<a href="delete.php?profile_id=<?php echo $profile->profile_id; ?>" target="_new">
+												<a href="delete.php?profile_id=<?php echo $profile->profile_id; ?>">
 													Delete
 												</a>
 											</td>
